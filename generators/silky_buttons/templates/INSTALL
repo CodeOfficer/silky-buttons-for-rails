@@ -1,0 +1,25 @@
+
+#  -----------------------------------------------------------------------------
+
+  Some SilkyButton Helper methods were installed into your app/helpers folder.
+
+  Browse them at your leisure, or try these examples:
+
+    silk_image('pencil.png')
+
+    form_tag(root_path, {:method => :get, :class => "form"}) do
+      submit_resource_button('ordinary')
+      submit_resource_button('creative', :class => 'positive')
+      submit_resource_button('harmful', :class => 'negative')
+    end
+
+    new_resource_button(Post.new)
+    edit_resource_button(Post.first)
+    destroy_resource_button(Post.last)
+    
+  You'll need to include the buttons styles into your layout first.
+  
+    stylesheet_link_tag 'silky_buttons.css'
+
+  Enjoy ...
+
