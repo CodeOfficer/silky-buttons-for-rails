@@ -3,7 +3,7 @@
 
   Some SilkyButton Helper methods were installed into your app/helpers folder.
 
-  Browse them at your leisure, or try these examples:
+  Browse them at your leisure, or try these examples in your view:
 
     silk_image('pencil.png')
 
