@@ -5,21 +5,50 @@
 
   Browse them at your leisure, or try these examples in your view:
 
-    <%= silk_image('pencil.png') %>
+    <%= silk_image('pencil.png') %> outputs ...
+      <img alt="Pencil" src="/images/silk/icons/pencil.png?1227089564" />
+
 
     <% form_tag(root_path, {:method => :get, :class => "form"}) do %>
-      <%= submit_button('ordinary') %>
-      <%= submit_button('creative', :class => 'positive') %>
-      <%= submit_button('harmful', :class => 'negative') %>
+      <%= submit_button('ordinary') %> outputs ....
+      <button class="button " type="submit">
+        <img alt="Tick" src="/images/silk/icons/tick.png?1227089564" /> ordinary
+      </button>
+
+      <%= submit_button('creative', :class => 'positive') %> outputs ....
+      <button class="button positive" type="submit">
+        <img alt="Tick" src="/images/silk/icons/tick.png?1227089564" /> creative
+      </button>
+
+      <%= submit_button('harmful', :class => 'negative') %> outputs ....
+      <button class="button negative" type="submit">
+        <img alt="Tick" src="/images/silk/icons/tick.png?1227089564" /> harmful
+      </button>
     <% end %>
 
-    <%= show_button(Post.first) %>
-    <%= new_button(Post.new) %>
-    <%= edit_button(Post.first) %>
-    <%= destroy_button(Post.first) %>
-    
+
+    <%= show_button(Post.first) %> outputs ....
+    <a href="/posts/1" class="button ">
+      <img alt="Eye" src="/images/silk/icons/eye.png?1227089564" /> Show Post
+    </a>
+
+    <%= new_button(Post.new) %> outputs ....
+    <a href="/posts/new" class="button positive ">
+      <img alt="Add" src="/images/silk/icons/add.png?1227089564" /> Create Post
+    </a>
+
+    <%= edit_button(Post.first) %> outputs ....
+    <a href="/posts/1/edit" class="button ">
+      <img alt="Pencil" src="/images/silk/icons/pencil.png?1227089564" /> Edit Post
+    </a>
+
+    <%= destroy_button(Post.first) %> outputs ....
+    <a href="/posts/4" class="button negative " onclick="if (confirm('Are you sure?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);var s = document.createElement('input'); s.setAttribute('type', 'hidden'); s.setAttribute('name', 'authenticity_token'); s.setAttribute('value', '88f86d3f9ef9d62c7f74ccca942577aa277bc781'); f.appendChild(s);f.submit(); };return false;">
+      <img alt="Delete" src="/images/silk/icons/delete.png?1227089564" /> Delete Post
+    </a>
+
   You'll need to include the buttons styles into your layout first.
-  
+
     <%= stylesheet_link_tag 'silky_buttons.css' %>
 
   Enjoy ...
