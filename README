@@ -1,11 +1,11 @@
 SilkButtons
 ===========
 
-	TO INSTALL:
-	
-		1. script/plugin install git://github.com/CodeOfficer/silky-buttons-for-rails.git
-		2. script/generate silky_buttons
-		3. put <%= stylesheet_link_tag 'silky_buttons.css' %> in your layouts
+  TO INSTALL:
+
+  1. script/plugin install git://github.com/CodeOfficer/silky-buttons-for-rails.git
+  2. script/generate silky_buttons
+  3. put <%= stylesheet_link_tag 'silky_buttons.css' %> in your layouts
 
   Some SilkyButton Helper methods were installed into your app/helpers folder.
 
