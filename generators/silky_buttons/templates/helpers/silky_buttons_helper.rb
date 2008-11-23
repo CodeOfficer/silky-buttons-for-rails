@@ -30,6 +30,7 @@ module SilkyButtonsHelper
   alias_method :show_button, :show_resource_button
 
   def new_resource_button(resource, options={})
+    options[:class]   = "positive"
     options[:icon]  ||= "add.png"
     options[:text]  ||= "Create #{resource.class.to_s.humanize}"
     options[:path]  ||= new_polymorphic_path(resource)
@@ -46,6 +47,7 @@ module SilkyButtonsHelper
   alias_method :edit_button, :edit_resource_button
 
   def destroy_resource_button(resource, options={})
+    options[:class]   = "negative"
     options[:icon]    ||= "delete.png"
     options[:path]    ||= polymorphic_path(resource)
     options[:text]    ||= "Delete #{resource.class.to_s.humanize}"
