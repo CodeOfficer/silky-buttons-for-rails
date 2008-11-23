@@ -6,19 +6,14 @@ module SilkyButtonsHelper
 
   def submit_resource_button(text, options={})
     options[:text]      = text
-    options[:class]     ||= ''
-    options[:id]        ||= ''
+    options[:icon]      ||= "tick.png"
     options[:type]      ||= "submit"
-    options[:icon]      ||= 'tick.png'
     unless options[:icon].blank?
       options[:icon] =  silk_image(options[:icon])
       options[:text] = "#{options[:icon]} #{options[:text]}"
     end
-    link_to_options = {}
-    link_to_options.merge!({ :class => "button #{options[:class]}" })
-    link_to_options.merge!({ :id => options[:id] }) unless options[:id].blank?
-    link_to_options.merge!({ :type => options[:type] })
-    content_tag(:button, options[:text], link_to_options)
+    options.merge!({ :class => "button #{options[:class]}" })
+    content_tag:button, options[:text], options.delete_if { |k, v| [:icon, :text].include? k }
   end
   alias_method :submit_button, :submit_resource_button
 
@@ -31,7 +26,7 @@ module SilkyButtonsHelper
   alias_method :show_button, :show_resource_button
 
   def new_resource_button(resource, options={})
-    options[:class]   = "positive"
+    options[:class]   = "positive #{options[:class]}"
     options[:icon]  ||= "add.png"
     options[:text]  ||= "Create #{resource.class.to_s.humanize}"
     options[:path]  ||= new_polymorphic_path(resource)
@@ -41,40 +36,33 @@ module SilkyButtonsHelper
 
   def edit_resource_button(resource, options={})
     options[:icon]  ||= "pencil.png"
-    options[:path]  ||= edit_polymorphic_path(resource)
     options[:text]  ||= "Edit #{resource.class.to_s.humanize}"
+    options[:path]  ||= edit_polymorphic_path(resource)
     resource_button(resource, options)
   end
   alias_method :edit_button, :edit_resource_button
 
   def destroy_resource_button(resource, options={})
-    options[:class]   = "negative"
-    options[:icon]    ||= "delete.png"
-    options[:path]    ||= polymorphic_path(resource)
-    options[:text]    ||= "Delete #{resource.class.to_s.humanize}"
+    options[:class]   = "negative #{options[:class]}"
     options[:method]  ||= :delete
     options[:confirm] ||= "Are you sure?"
+    options[:icon]    ||= "delete.png"
+    options[:text]    ||= "Delete #{resource.class.to_s.humanize}"
+    options[:path]    ||= polymorphic_path(resource)
     resource_button(resource, options)
   end
   alias_method :destroy_button, :destroy_resource_button
 
   def resource_button(resource, options={})
-    options[:confirm]     ||= nil
-    options[:method]      ||= nil
-    options[:icon]        ||= ''
-    options[:text]        ||= "#{resource.class.to_s.humanize}"
+    options[:icon]        ||= nil 
+    options[:text]        ||= resource.class.to_s.humanize
     options[:path]        ||= polymorphic_path(resource)
-    options[:class]       ||= ''
     unless options[:icon].blank?
       options[:icon] = silk_image(options[:icon])
       options[:text] = "#{options[:icon]} #{options[:text]}"
     end
-    link_to_options = {}
-    link_to_options.merge!({ :class => "button #{options[:class]}" })
-    link_to_options.merge!({ :method => options[:method] }) unless options[:method].blank?
-    link_to_options.merge!({ :confirm => options[:confirm] }) unless options[:confirm].blank?
-    link_to options[:text], options[:path], link_to_options
-
+    options.merge!({ :class => "button #{options[:class]}" })
+    link_to options[:text], options[:path], options.delete_if { |k, v| [:icon, :text, :path].include? k }
   end
   
 end
