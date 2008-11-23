@@ -21,34 +21,45 @@ module SilkyButtonsHelper
     content_tag(:button, options[:text], link_to_options)
   end
 
+  def show_resource_button(resource, options={})
+    options[:icon]  ||= "eye.png"
+    options[:text]  ||= "Show #{resource.class.to_s.humanize}"
+    options[:path]  ||= polymorphic_path(resource)
+    resource_button(resource, options)
+  end
+  alias_method :show_button, :show_resource_button
+
   def new_resource_button(resource, options={})
     options[:icon]  ||= "add.png"
-    options[:text]  ||= "Create a new #{resource.class.to_s.humanize}"
+    options[:text]  ||= "Create #{resource.class.to_s.humanize}"
     options[:path]  ||= new_polymorphic_path(resource)
     resource_button(resource, options)
   end
+  alias_method :new_button, :new_resource_button
 
   def edit_resource_button(resource, options={})
     options[:icon]  ||= "pencil.png"
     options[:path]  ||= edit_polymorphic_path(resource)
-    options[:text]  ||= "Edit this #{resource.class.to_s.humanize}"
+    options[:text]  ||= "Edit #{resource.class.to_s.humanize}"
     resource_button(resource, options)
   end
+  alias_method :edit_button, :edit_resource_button
 
   def destroy_resource_button(resource, options={})
     options[:icon]    ||= "delete.png"
     options[:path]    ||= polymorphic_path(resource)
-    options[:text]    ||= "Delete this #{resource.class.to_s.humanize}"
+    options[:text]    ||= "Delete #{resource.class.to_s.humanize}"
     options[:method]  ||= :delete
     options[:confirm] ||= "Are you sure?"
     resource_button(resource, options)
   end
+  alias_method :destroy_button, :destroy_resource_button
 
   def resource_button(resource, options={})
     options[:confirm]     ||= nil
     options[:method]      ||= nil
     options[:icon]        ||= ''
-    options[:text]        ||= "Create a new #{resource.class.to_s.humanize}"
+    options[:text]        ||= "#{resource.class.to_s.humanize}"
     options[:path]        ||= polymorphic_path(resource)
     options[:class]       ||= ''
     unless options[:icon].blank?
