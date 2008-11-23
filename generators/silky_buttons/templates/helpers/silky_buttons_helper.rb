@@ -15,11 +15,12 @@ module SilkyButtonsHelper
       options[:text] = "#{options[:icon]} #{options[:text]}"
     end
     link_to_options = {}
-    link_to_options.merge!({ :class => "button clearfix #{options[:class]}" })
+    link_to_options.merge!({ :class => "button #{options[:class]}" })
     link_to_options.merge!({ :id => options[:id] }) unless options[:id].blank?
     link_to_options.merge!({ :type => options[:type] })
     content_tag(:button, options[:text], link_to_options)
   end
+  alias_method :submit_button, :submit_resource_button
 
   def show_resource_button(resource, options={})
     options[:icon]  ||= "eye.png"
@@ -72,9 +73,9 @@ module SilkyButtonsHelper
     link_to_options.merge!({ :class => "button #{options[:class]}" })
     link_to_options.merge!({ :method => options[:method] }) unless options[:method].blank?
     link_to_options.merge!({ :confirm => options[:confirm] }) unless options[:confirm].blank?
-    content_tag :div, :class => "clearfix" do
+    # content_tag :div, :class => "clearfix" do
       link_to options[:text], options[:path], link_to_options
-    end
+    # end
   end
   
 end
