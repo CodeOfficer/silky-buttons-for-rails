@@ -73,9 +73,8 @@ module SilkyButtonsHelper
     link_to_options.merge!({ :class => "button #{options[:class]}" })
     link_to_options.merge!({ :method => options[:method] }) unless options[:method].blank?
     link_to_options.merge!({ :confirm => options[:confirm] }) unless options[:confirm].blank?
-    # content_tag :div, :class => "clearfix" do
-      link_to options[:text], options[:path], link_to_options
-    # end
+    link_to options[:text], options[:path], link_to_options
+
   end
   
 end
