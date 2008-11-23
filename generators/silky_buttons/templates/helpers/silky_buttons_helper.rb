@@ -6,14 +6,14 @@ module SilkyButtonsHelper
 
   def submit_resource_button(text, options={})
     options[:text]      = text
+    options[:type]      = "submit"
     options[:icon]      ||= "tick.png"
-    options[:type]      ||= "submit"
     unless options[:icon].blank?
       options[:icon] =  silk_image(options[:icon])
       options[:text] = "#{options[:icon]} #{options[:text]}"
     end
     options.merge!({ :class => "button #{options[:class]}" })
-    content_tag:button, options[:text], options.delete_if { |k, v| [:icon, :text].include? k }
+    content_tag :button, options[:text], options.delete_if { |k, v| [:icon, :text].include? k }
   end
   alias_method :submit_button, :submit_resource_button
 
