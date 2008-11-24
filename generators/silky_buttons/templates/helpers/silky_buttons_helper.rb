@@ -54,7 +54,6 @@ module SilkyButtonsHelper
   alias_method :destroy_button, :destroy_resource_button
 
   def resource_button(resource, options={})
-    options[:icon]        ||= nil 
     options[:text]        ||= resource.class.to_s.humanize
     options[:path]        ||= polymorphic_path(resource)
     unless options[:icon].blank?
