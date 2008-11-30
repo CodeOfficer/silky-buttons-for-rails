@@ -28,7 +28,7 @@ module SilkyButtonsHelper
   def new_resource_button(resource, options={})
     options[:class]   = "positive #{options[:class]}"
     options[:icon]  ||= "add.png"
-    options[:text]  ||= "Create #{resource.class.to_s.humanize}"
+    options[:text]  ||= "New #{resource.class.to_s.humanize}"
     options[:path]  ||= new_polymorphic_path(resource)
     resource_button(resource, options)
   end
