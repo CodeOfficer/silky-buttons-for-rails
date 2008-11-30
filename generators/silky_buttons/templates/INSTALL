@@ -34,7 +34,7 @@
 
     <%= new_button(Post.new) %> outputs ....
     <a href="/posts/new" class="button positive ">
-      <img alt="Add" src="/images/silk/icons/add.png?1227089564" /> Create Post
+      <img alt="Add" src="/images/silk/icons/add.png?1227089564" /> New Post
     </a>
 
     <%= edit_button(Post.first) %> outputs ....
